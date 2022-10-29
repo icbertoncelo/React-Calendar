@@ -1,4 +1,4 @@
-import { Readme } from "../components";
+import { Readme } from "@components";
 
 export function App() {
   return (
