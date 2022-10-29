@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
-import Counter from "./Counter";
+import { Counter } from "../Counter";
 
 const README_PATH =
   "https://raw.githubusercontent.com/Jobsity/ReactChallenge/main/README.md";
 
-function Readme() {
-  const [md, setMd] = useState(null);
+export function Readme() {
+  const [md, setMd] = useState("");
 
   useEffect(() => {
     fetch(README_PATH, { mode: "cors" })
@@ -36,5 +36,3 @@ The component below has a suite of tests to that could serve as guidance to unit
     </div>
   );
 }
-
-export default Readme;

@@ -1,14 +1,12 @@
+import "./sass/app.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider as ReduxProvider } from "react-redux";
 
-import Main from "./Main";
+import { Main } from "./Main";
 import reducers from "./reducers";
 import reportWebVitals from "./reportWebVitals";
 import getStore from "./store/getStore";
-
-// import main sass file
-import "./sass/app.scss";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,11 +1,10 @@
-import React from "react";
+import { useState } from "react";
 
-import PropTypes from "prop-types";
+import { Button } from "../Button";
+import { ICounterProps } from "./types";
 
-import Button from "./Button";
-
-function Counter({ limit }) {
-  const [count, setCount] = React.useState(0);
+export function Counter({ limit }: ICounterProps) {
+  const [count, setCount] = useState(0);
   const isLimitReached = limit ? count === limit : false;
 
   return (
@@ -30,9 +29,3 @@ function Counter({ limit }) {
     </div>
   );
 }
-
-Counter.propTypes = {
-  limit: PropTypes.number,
-};
-
-export default Counter;

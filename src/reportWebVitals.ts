@@ -1,4 +1,6 @@
-const reportWebVitals = (onPerfEntry) => {
+type ReportWebVitalsType = () => void;
+
+const reportWebVitals = (onPerfEntry: ReportWebVitalsType = () => {}) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
       getCLS(onPerfEntry);
