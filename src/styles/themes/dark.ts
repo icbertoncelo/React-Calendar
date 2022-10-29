@@ -3,4 +3,5 @@ export const darkTheme = {
   secondary: "#325f8f",
   text: "#e5ebf1",
   background: "#222",
+  tableBG: "#777",
 };

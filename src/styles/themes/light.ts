@@ -3,4 +3,5 @@ export const lightTheme = {
   secondary: "#325f8f",
   text: "#222",
   background: "#e5ebf1",
+  tableBG: "#fff",
 };
