@@ -1,9 +1,13 @@
-import React from "react";
+import { useTheme } from "@hooks";
+
+import { CalendarContainer, ThemeButton } from "./styles";
 
 export function Calendar() {
+  const { theme, onChangeTheme } = useTheme();
+
   return (
-    <div className="container">
-      <h1>Calendar</h1>
-    </div>
+    <CalendarContainer>
+      <ThemeButton onClick={onChangeTheme}>{theme}</ThemeButton>
+    </CalendarContainer>
   );
 }

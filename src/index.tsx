@@ -1,4 +1,3 @@
-import "./sass/app.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider as ReduxProvider } from "react-redux";
