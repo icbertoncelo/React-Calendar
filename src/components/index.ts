@@ -3,3 +3,4 @@ export * from "./Counter";
 export * from "./DayCell";
 export * from "./Input";
 export * from "./Readme";
+export * from "./Reminder";

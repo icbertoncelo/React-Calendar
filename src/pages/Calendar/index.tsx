@@ -22,6 +22,10 @@ import {
 } from "./styles";
 import { themeButtonText, WEEKDAYS } from "./utils";
 
+// - Adicionar os reminders no store do redux
+// - Mostrar reminders no dia
+// - Adicionar informações do tempo no reminder
+
 export function Calendar() {
   const { theme, onChangeTheme } = useTheme();
 
@@ -74,9 +78,10 @@ export function Calendar() {
           {Array.from({ length: monthDaysQuantity }).map((_, index) => {
             const day = index + 1;
             const selectedDate = set(currentDate, { date: day });
+            const cellDate = format(selectedDate, "yyyy'-'MM'-'dd");
 
             return (
-              <DayCell key={day} date={selectedDate}>
+              <DayCell key={day} date={cellDate}>
                 {String(day)}
               </DayCell>
             );

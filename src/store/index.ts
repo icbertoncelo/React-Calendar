@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import reducers from "src/reducers";
 
 const initialState = {};
 const enhancers = [];
@@ -15,8 +16,7 @@ if (process.env.NODE_ENV === "development") {
 
 const composedEnhancers = compose(applyMiddleware(...middleware), ...enhancers);
 
-export default function getStore(reducer: any) {
-  const store = createStore(reducer, initialState, composedEnhancers);
+export const store = createStore(reducers, initialState, composedEnhancers);
 
-  return store;
-}
+export type RootState = ReturnType<typeof reducers>;
+export type AppDispatch = typeof store.dispatch;
