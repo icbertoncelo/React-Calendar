@@ -48,4 +48,8 @@ export const GlobalStyle = createGlobalStyle`
   li {
     margin-top: 0.25rem;
   }
+
+  button {
+    cursor: pointer;
+  }
 `;

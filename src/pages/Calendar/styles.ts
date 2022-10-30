@@ -9,17 +9,23 @@ export const CalendarContainer = styled.div`
 `;
 
 export const ThemeButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   right: 24px;
   top: 24px;
 
-  background: ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.background};
+  background: none;
+  color: ${({ theme }) => theme.text};
   height: 48px;
   width: 48px;
-  padding: 4px 8px;
+  padding: 4px;
   border: none;
-  border-radius: 50%;
+
+  span {
+    font-size: 40px;
+  }
 `;
 
 export const CalendarContent = styled.div`
@@ -47,6 +53,15 @@ export const CalendarHeader = styled.div`
     color: ${({ theme }) => theme.text};
     border: none;
     padding: 2px;
+    font-weight: bold;
+
+    &:hover {
+      color: ${({ theme }) => theme.background};
+    }
+  }
+
+  span {
+    color: ${({ theme }) => theme.text};
   }
 `;
 
@@ -65,18 +80,4 @@ export const CalendarDaysContent = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: ${({ theme }) => theme.tableBG};
-
-  button {
-    text-align: center;
-    padding: 2px;
-    height: 64px;
-    border: none;
-    background: ${({ theme }) => theme.tableBG};
-    color: ${({ theme }) => theme.text};
-
-    :nth-child(4) {
-      background: ${({ theme }) => theme.primary};
-      color: white;
-    }
-  }
 `;
