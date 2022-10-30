@@ -23,14 +23,17 @@ export const InputContainer = styled.input`
   -webkit-box-shadow: 4px 2px 5px 0px rgba(0, 0, 0, 0.52);
   ::-webkit-input-placeholder {
     color: ${({ theme }) => theme.text};
+    opacity: 0.5;
   }
 
   :-ms-input-placeholder {
     color: ${({ theme }) => theme.text};
+    opacity: 0.5;
   }
 
   ::placeholder {
     color: ${({ theme }) => theme.text};
+    opacity: 0.5;
   }
 
   &:active,
