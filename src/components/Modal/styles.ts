@@ -28,6 +28,10 @@ export const ModalContent = styled.form`
     margin-bottom: 12px;
   }
 
+  p {
+    margin-bottom: 12px;
+  }
+
   button {
     &:first-child {
       display: flex;
@@ -48,4 +52,8 @@ export const ModalContent = styled.form`
       }
     }
   }
+`;
+
+export const Weather = styled.div`
+  margin-bottom: 12px;
 `;

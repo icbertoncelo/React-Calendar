@@ -1,12 +1,18 @@
-import { IReminder } from "src/utils";
+import { IReminder } from "@utils";
 
-import { ADD_REMINDER, EDIT_REMINDER, REMOVE_REMINDER } from "../actions";
+import {
+  ADD_REMINDER,
+  EDIT_REMINDER,
+  REMOVE_REMINDER,
+  GET_WEATHER_SUCCESS,
+  GET_WEATHER_FAILURE,
+} from "../actions";
 
 export interface IReminderState {
   [key: string]: IReminder[];
 }
 
-type CounterAction = {
+type ReminderAction = {
   type: string;
   payload: any;
 };
@@ -15,7 +21,7 @@ const INITIAL_STATE: IReminderState = {};
 
 export const reminderReducer = (
   state = INITIAL_STATE,
-  action: CounterAction
+  action: ReminderAction
 ) => {
   switch (action.type) {
     case ADD_REMINDER:
@@ -47,6 +53,17 @@ export const reminderReducer = (
         ...state,
         [action.payload.date]: [...remindersWithoutEdited, action.payload],
       };
+    case GET_WEATHER_SUCCESS:
+      const remindersWithoutSelected = state[action.payload.date].filter(
+        (reminder) => reminder.id !== action.payload.id
+      );
+
+      return {
+        ...state,
+        [action.payload.date]: [...remindersWithoutSelected, action.payload],
+      };
+    case GET_WEATHER_FAILURE:
+      return state;
     default:
       return state;
   }

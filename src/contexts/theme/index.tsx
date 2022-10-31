@@ -1,7 +1,6 @@
 import { createContext, useState, useCallback } from "react";
 
-import { lightTheme } from "src/styles/themes";
-import { darkTheme } from "src/styles/themes/dark";
+import { lightTheme, darkTheme } from "src/styles/themes";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 
 import { IThemeProviderProps, ThemeProviderData, ThemeType } from "./types";

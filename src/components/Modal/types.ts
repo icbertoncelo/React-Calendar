@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent } from "react";
 
+import { IReminder } from "@utils";
+
 export interface IModalProps {
   title: string;
   isOpen: boolean;
@@ -7,4 +9,5 @@ export interface IModalProps {
   formData: any;
   handleFormInput: (event: ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (event: FormEvent) => void;
+  reminder?: IReminder;
 }

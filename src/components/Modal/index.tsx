@@ -1,6 +1,6 @@
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { ModalContainer, ModalContent } from "./styles";
+import { ModalContainer, ModalContent, Weather } from "./styles";
 import { IModalProps } from "./types";
 
 export function Modal({
@@ -10,6 +10,7 @@ export function Modal({
   formData,
   handleFormInput,
   onSubmit,
+  reminder,
 }: IModalProps) {
   return (
     <ModalContainer
@@ -40,6 +41,22 @@ export function Modal({
           value={formData.datePicker}
           onChange={handleFormInput}
         />
+
+        {reminder?.weather ? (
+          <Weather>
+            <p>{reminder.weather.description}</p>
+            <div>
+              <strong>Min:</strong>
+              <span>{reminder.weather.tempMin}</span>
+            </div>
+            <div>
+              <strong>Max:</strong>
+              <span>{reminder.weather.tempMax}</span>
+            </div>
+          </Weather>
+        ) : (
+          <p>No weather information</p>
+        )}
 
         <Button onClick={onSubmit}>Send</Button>
       </ModalContent>

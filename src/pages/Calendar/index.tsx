@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { DayCell } from "@components";
 import { useTheme } from "@hooks";
 import {
   differenceInDays,
@@ -10,7 +11,6 @@ import {
   format,
   set,
 } from "date-fns";
-import { DayCell } from "src/components/DayCell";
 
 import {
   CalendarContainer,
@@ -21,10 +21,6 @@ import {
   CalendarDaysContent,
 } from "./styles";
 import { themeButtonText, WEEKDAYS } from "./utils";
-
-// - Adicionar os reminders no store do redux
-// - Mostrar reminders no dia
-// - Adicionar informações do tempo no reminder
 
 export function Calendar() {
   const { theme, onChangeTheme } = useTheme();

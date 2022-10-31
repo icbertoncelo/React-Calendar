@@ -1,13 +1,14 @@
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 
+import { getWeather } from "@actions";
 import { useAppDispatch, useAppSelector } from "@hooks";
-import { IReminder } from "src/utils";
+import { IFormData, IReminder } from "@utils";
 import { v4 as uuid } from "uuid";
 
 import { Modal } from "../Modal";
 import { Reminder } from "../Reminder";
 import { DayContainer } from "./styles";
-import { IDayCellProps, IFormData } from "./types";
+import { IDayCellProps } from "./types";
 
 export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
   const INITIAL_FORM_DATA: IFormData = {
@@ -21,6 +22,10 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedReminder, setSelectedReminder] = useState<
+    IReminder | undefined
+  >(undefined);
+
   const [formData, setFormData] = useState<IFormData>(INITIAL_FORM_DATA);
 
   function handleCloseModal() {
@@ -54,11 +59,12 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
     }));
   }
 
-  const handleOpenEditModal = (
+  async function handleOpenEditModal(
     event: MouseEvent<HTMLButtonElement>,
     reminder: IReminder
-  ) => {
+  ) {
     event.stopPropagation();
+    setSelectedReminder(reminder);
 
     const { id, description, date, city } = reminder;
 
@@ -69,8 +75,14 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
       city,
     });
 
+    await dispatch(
+      getWeather({
+        reminder,
+      })
+    );
+
     setIsEditModalOpen(true);
-  };
+  }
 
   function handleEditReminder(event: FormEvent) {
     event.preventDefault();
@@ -85,6 +97,7 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
         date: datePicker,
       },
     });
+
     handleCloseModal();
   }
 
@@ -112,6 +125,7 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
         handleFormInput={handleFormInput}
         onSubmit={handleSubmitReminder}
       />
+
       <Modal
         title="Edit reminder"
         isOpen={isEditModalOpen}
@@ -119,6 +133,7 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
         formData={formData}
         handleFormInput={handleFormInput}
         onSubmit={handleEditReminder}
+        reminder={selectedReminder}
       />
     </>
   );
