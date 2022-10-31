@@ -31,7 +31,7 @@ export const getWeather = ({ reminder }: IGetWeatherProps) => {
       .get(`/${city}/${date}`, {
         params: {
           unitGroup: "us",
-          key: "ZULYM2QH667UKHHBHSND4SVDS",
+          key: process.env.REACT_APP_WEATHER_KEY,
           contentType: "json",
         },
       })
