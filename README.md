@@ -6,7 +6,7 @@
 
 ## How to deploy
 
-Before all, rename the **.env.example** file to **.env** and add the key sended by email. After that, follow the instructions bellow to run the project:
+Before all, check the **.env** and add the key sended by email. After that, follow the instructions bellow to run the project:
 
 - Run `npm install` | `yarn install` to install all dependencies.
 - Run `npm start` | `yarn run` to run the app locally.
