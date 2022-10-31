@@ -103,11 +103,16 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
 
   return (
     <>
-      <DayContainer {...rest} onClick={() => setIsModalOpen(true)}>
+      <DayContainer
+        data-testid={`${date}-day-container`}
+        onClick={() => setIsModalOpen(true)}
+        {...rest}
+      >
         <span>{children}</span>
         <ul>
-          {reminders[date]?.map((reminder) => (
+          {reminders[date]?.map((reminder, index) => (
             <Reminder
+              data-testid={`${reminder.date}-${index}-reminder`}
               key={reminder.id}
               onClick={(event) => handleOpenEditModal(event, reminder)}
             >

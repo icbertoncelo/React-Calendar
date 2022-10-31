@@ -23,6 +23,7 @@ export function Modal({
         <h2>{title}</h2>
 
         <Input
+          data-testid="description-input"
           name="description"
           maxLength={30}
           placeholder="description"
@@ -30,12 +31,14 @@ export function Modal({
           onChange={handleFormInput}
         />
         <Input
+          data-testid="city-input"
           name="city"
           placeholder="City"
           value={formData.city}
           onChange={handleFormInput}
         />
         <Input
+          data-testid="date-input"
           name="date"
           type="date"
           value={formData.datePicker}
@@ -58,7 +61,9 @@ export function Modal({
           <p>No weather information</p>
         )}
 
-        <Button onClick={onSubmit}>Send</Button>
+        <Button data-testid="modal-send-button" onClick={onSubmit}>
+          Send
+        </Button>
       </ModalContent>
     </ModalContainer>
   );

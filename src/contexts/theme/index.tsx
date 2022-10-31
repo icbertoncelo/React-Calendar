@@ -1,8 +1,8 @@
 import { createContext, useState, useCallback } from "react";
 
-import { lightTheme, darkTheme } from "src/styles/themes";
 import { ThemeProvider as SCThemeProvider } from "styled-components";
 
+import { lightTheme, darkTheme } from "../../styles/themes";
 import { IThemeProviderProps, ThemeProviderData, ThemeType } from "./types";
 
 export const ThemeContext = createContext<ThemeProviderData>(
