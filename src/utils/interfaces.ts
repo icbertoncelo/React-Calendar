@@ -3,8 +3,8 @@ export interface IWeather {
   description: string;
   tempMax: number;
   tempMin: number;
-  humidity: number;
-  precip: number;
+  humidity?: number;
+  precip?: number;
 }
 
 export interface IReminder {
@@ -13,6 +13,8 @@ export interface IReminder {
   city: string;
   date: string;
   weather?: IWeather;
+  isLoading?: boolean;
+  isError?: boolean;
 }
 
 export interface IFormData {

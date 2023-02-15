@@ -1,10 +1,14 @@
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 
-import { getWeather } from "@actions";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { IFormData, IReminder } from "@utils";
 import { v4 as uuid } from "uuid";
 
+import {
+  addReminder,
+  editReminder,
+  getWeather,
+} from "../../redux/features/reminders/remindersSlicer";
 import { Modal } from "../Modal";
 import { Reminder } from "../Reminder";
 import { DayContainer } from "./styles";
@@ -40,15 +44,14 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
     event.preventDefault();
     const { id, description, city, datePicker } = formData;
 
-    dispatch({
-      type: "ADD_REMINDER",
-      payload: {
+    dispatch(
+      addReminder({
         id,
         description,
         city,
         date: datePicker,
-      },
-    });
+      })
+    );
     handleCloseModal();
   }
 
@@ -75,11 +78,7 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
       city,
     });
 
-    await dispatch(
-      getWeather({
-        reminder,
-      })
-    );
+    await dispatch(getWeather(reminder));
 
     setIsEditModalOpen(true);
   }
@@ -88,16 +87,14 @@ export function DayCell({ children, date = "", ...rest }: IDayCellProps) {
     event.preventDefault();
     const { id, description, city, datePicker } = formData;
 
-    dispatch({
-      type: "EDIT_REMINDER",
-      payload: {
+    dispatch(
+      editReminder({
         id,
         description,
         city,
         date: datePicker,
-      },
-    });
-
+      })
+    );
     handleCloseModal();
   }
 

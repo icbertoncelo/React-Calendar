@@ -12,6 +12,28 @@ export function Modal({
   onSubmit,
   reminder,
 }: IModalProps) {
+  function renderMessage() {
+    if (reminder?.isError) return <p>Api Error</p>;
+
+    if (reminder?.isLoading) return <p>Loading ...</p>;
+
+    if (!reminder?.weather) return <p>No Weather information</p>;
+
+    return (
+      <Weather>
+        <p>{reminder.weather.description}</p>
+        <div>
+          <strong>Min:</strong>
+          <span>{reminder.weather.tempMin}</span>
+        </div>
+        <div>
+          <strong>Max:</strong>
+          <span>{reminder.weather.tempMax}</span>
+        </div>
+      </Weather>
+    );
+  }
+
   return (
     <ModalContainer
       isOpen={isOpen}
@@ -45,21 +67,7 @@ export function Modal({
           onChange={handleFormInput}
         />
 
-        {reminder?.weather ? (
-          <Weather>
-            <p>{reminder.weather.description}</p>
-            <div>
-              <strong>Min:</strong>
-              <span>{reminder.weather.tempMin}</span>
-            </div>
-            <div>
-              <strong>Max:</strong>
-              <span>{reminder.weather.tempMax}</span>
-            </div>
-          </Weather>
-        ) : (
-          <p>No weather information</p>
-        )}
+        {renderMessage()}
 
         <Button data-testid="modal-send-button" onClick={onSubmit}>
           Send
